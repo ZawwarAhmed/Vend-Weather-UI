@@ -1,0 +1,38 @@
+.city-dropdown {
+  position: relative;
+  width: 20rem;
+  color: white;
+  background-color: hsla(0, 0%, 100%, 0.18);
+  margin-left: auto;
+  border-radius: 1rem;
+  overflow-y: scroll;
+  max-height: 13rem;
+}
+
+.city-dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+.select {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 1em;
+  width: 100%;
+  color: hsl(0, 0%, 100%);
+  background-color: inherit;
+}
+
+.select::placeholder {
+  color: hsla(0, 0%, 100%, 0.76);
+}
+
+.option {
+  cursor: pointer;
+  display: block;
+  padding: 1em;
+}
+
+.option:hover {
+  background-color: hsla(0, 0%, 100%, 0.18);
+}
