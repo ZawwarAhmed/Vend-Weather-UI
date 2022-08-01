@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/DailyWeather.css";
+import "./DailyWeather.css"
 
 function DailyWeather() {
   const days = [
