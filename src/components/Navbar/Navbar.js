@@ -1,6 +1,6 @@
 import React from "react";
-import Dropdown from "./Dropdown";
-import "../stylesheets/Navbar.css"
+import Dropdown from "../Dropdown/Dropdown";
+import "./Navbar.css"
 
 function Navbar() {
   return (
