@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../stylesheets/Dropdown.css";
+import "./Dropdown.css";
 
 function Dropdown() {
   const citiesData = ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Peshawar"];
