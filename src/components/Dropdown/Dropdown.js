@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { citiesData } from "../../assets/data/citiesData";
 import "./Dropdown.css";
 
 function Dropdown() {
-  const citiesData = ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Peshawar"];
   const [cities, setCities] = useState(citiesData);
   const [city, setCity] = useState(cities[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
