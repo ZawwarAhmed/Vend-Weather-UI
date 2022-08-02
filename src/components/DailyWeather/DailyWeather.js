@@ -1,26 +1,8 @@
 import React from "react";
+import { days, weather, temperature } from "../../assets/data/weatherData";
 import "./DailyWeather.css"
 
 function DailyWeather() {
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-  const weather = [
-    "Rainy",
-    "Rainy",
-    "ThunderStorm",
-    "Cloudy",
-    "Sunny",
-    "Rainy",
-    "Rainy",
-  ];
-  const temperature = [23, 24, 30, 31, 32, 33, 34, 35];
   return (
     <div className="daily-weather">
       {days.map((day, i) => (
