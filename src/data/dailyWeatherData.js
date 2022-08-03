@@ -7,7 +7,7 @@ export const days = [
   "Saturday",
   "Sunday",
 ];
-export const weather = [
+export const dailyWeather = [
   "Rainy",
   "Rainy",
   "ThunderStorm",
@@ -16,4 +16,4 @@ export const weather = [
   "Rainy",
   "Rainy",
 ];
-export const temperature = [23, 24, 30, 31, 32, 33, 34, 35];
+export const dailyTemperature = [23, 24, 30, 31, 32, 33, 34, 35];
