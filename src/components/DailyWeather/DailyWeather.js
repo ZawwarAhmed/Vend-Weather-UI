@@ -1,5 +1,5 @@
 import React from "react";
-import { days, weather, temperature } from "../../assets/data/weatherData";
+import { days, weather, temperature } from "../../data/weatherData";
 import "./DailyWeather.css"
 
 function DailyWeather() {
