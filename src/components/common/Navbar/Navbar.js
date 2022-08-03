@@ -1,12 +1,12 @@
 import React from "react";
-import CityDropdown from "../../CityDropdown/CityDropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import "./Navbar.css"
 
-function Navbar() {
+function Navbar({title, data}) {
   return (
     <div className="Navbar">
-      <h1 className="title">Vend Weather</h1>
-      <CityDropdown />
+      <h1 className="title">{title}</h1>
+      <Dropdown data={data} />
     </div>
   );
 }
