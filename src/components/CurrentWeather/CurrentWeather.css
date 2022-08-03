@@ -1,0 +1,14 @@
+.current-weather {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.city {
+    font-size: 2rem;
+}
+
+.temperature {
+    text-align: right;
+    font-size: 4rem;
+}
