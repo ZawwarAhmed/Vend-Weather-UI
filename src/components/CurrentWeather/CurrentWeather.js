@@ -1,20 +1,20 @@
 import React from 'react'
 import "./CurrentWeather.css"
 
-function CurrentWeather() {
+function CurrentWeather({city, day, currentWeather, currentTemperature}) {
   return (
     <div className='current-weather'>
         <div className="location">
             <h2 className="city">
-                Karachi
+                {city}
             </h2>
             <h2 className="day">
-                Friday
+                {day}
             </h2>
-            <h2 className="weather">Rainy</h2>
+            <h2 className="weather">{currentWeather}</h2>
         </div>
 
-        <h1 className="temperature">31°C</h1>
+        <h1 className="temperature">{currentTemperature}</h1>
     </div>
   )
 }
