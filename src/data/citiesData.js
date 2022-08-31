@@ -1,1 +1,7 @@
-export const citiesData = ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Peshawar"];
+import { getCities } from "../APIs/getCities";
+
+async function citiesResponse() {
+  return await getCities();
+}
+
+export { citiesResponse };
