@@ -1,35 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Dropdown.css";
 
-function Dropdown({ data }) {
-  const [options, setOptions] = useState(data);
-  const [setOption] = useState(options[0]);
+function Dropdown({ options, filterCityOptions }) {
+  const [option, setOption] = useState(options[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(() => !isDropdownOpen);
+  const openDropdown = () => {
+    setIsDropdownOpen(() => true);
   };
 
+  const closeDropdown = () => {
+    setIsDropdownOpen(() => false);
+  };
+  
   const handleCityChange = (option) => {
     setOption(option);
   };
 
-  const filterCityOptions = (text) => {
-    setOptions(
-      options.filter((option) =>
-        option.toLocaleLowerCase().includes(text.toLocaleLowerCase())
-      )
-    );
-  };
-
   return (
-    <div>
+    <div onFocus={openDropdown} onBlur={closeDropdown}>
       <div className="option-dropdown" name="option-dropdown">
         <input
           className="select"
-          onClick={toggleDropdown}
+          
           onChange={(e) => filterCityOptions(e.target.value)}
-          placeholder="Search for a option..."
+          placeholder="Search for a city..."
         />
         {isDropdownOpen && (
           <div className="options">
@@ -38,7 +33,7 @@ function Dropdown({ data }) {
                 key={i}
                 className="option"
                 value={option}
-                onClick={() => handleCityChange(option)}
+                onMouseDown={() => handleCityChange(option)}
               >
                 {option}
               </span>
