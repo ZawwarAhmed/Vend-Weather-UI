@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Dropdown.css";
 
-function Dropdown({ options, filterCityOptions }) {
-  const [option, setOption] = useState(options[0]);
+function Dropdown({ options, filterCityOptions, setOption }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openDropdown = () => {
@@ -14,6 +13,8 @@ function Dropdown({ options, filterCityOptions }) {
   };
   
   const handleCityChange = (option) => {
+    localStorage.setItem("city", option)
+    document.querySelector(".select").value = ""
     setOption(option);
   };
 
