@@ -1,7 +1,6 @@
-import { getCities } from "../APIs/getCities";
+import { getCitiesResponse } from "../DTOs/getCitiesResponse";
+import { getCities } from "../Services/getCities";
 
-async function citiesResponse() {
+export async function citiesResponse() {
   return await getCities();
 }
-
-export { citiesResponse };
