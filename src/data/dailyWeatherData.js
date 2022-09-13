@@ -1,5 +1,10 @@
-import { getDailyWeather } from "../APIs/getDailyWeather";
+import { getDailyWeatherResponse } from "../DTOs/getDailyWeatherResponse";
+import { getDailyWeather } from "../Services/getDailyWeather";
 
-export async function dailyWeatherResponse(city) {
+async function dailyWeatherResponse(city) {
   return await getDailyWeather(city);
 }
+
+// const dailyWeatherResponse = new getDailyWeatherResponse(dailyWeatherResponseFunction);
+
+export { dailyWeatherResponse };
