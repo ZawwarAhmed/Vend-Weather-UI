@@ -2,7 +2,7 @@ import { useLayoutEffect, useState } from "react";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import DailyWeather from "./components/DailyWeather/DailyWeather";
 import Navbar from "./components/common/Navbar/Navbar";
-import { title } from "./data/appData";
+import { navbarFor, title } from "./data/appData";
 import { currentWeatherResponse } from "./data/currentWeatherData";
 import { dailyWeatherResponse } from "./data/dailyWeatherData";
 import { citiesResponse } from "./data/citiesData";
@@ -15,7 +15,7 @@ function App() {
   const [dailyWeather, setDailyWeather] = useState([]);
   const [options, setOptions] = useState([]);
   const [option, setOption] = useState(
-    localStorage.getItem("city") || "Karachi"
+    localStorage.getItem(navbarFor) || "Karachi"
   );
 
   useLayoutEffect(() => {
@@ -34,7 +34,7 @@ function App() {
   const currentWeatherData = new getCurrentWeatherResponse(currentWeather);
   currentWeather.city = option;
 
-  const filterCityOptions = (text) => {
+  const filterOptions = (text) => {
     if (text.length >= 4) {
       setOptions(
         citiesData.cities.filter((option) =>
@@ -51,8 +51,9 @@ function App() {
       <Navbar
         title={title}
         options={options}
-        filterCityOptions={filterCityOptions}
+        filterOptions={filterOptions}
         setOption={setOption}
+        navbarFor={navbarFor}
       />
       <CurrentWeather currentWeatherData={currentWeatherData} />
       <DailyWeather dailyWeatherData={dailyWeatherData} />
