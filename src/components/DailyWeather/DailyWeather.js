@@ -1,16 +1,21 @@
 import React from "react";
 import "./DailyWeather.css"
 
-function DailyWeather({ days, dailyWeather, dailyTemperature }) {
+function DailyWeather({dailyWeatherData}) {
   return (
     <div className="daily-weather">
-      {days.map((day, i) => (
-        <div className="day-weather">
+    {dailyWeatherData.map(item => {
+    const { day, weather, temperature, weatherIcon, time } = item;
+      return (
+        <div  className="day-weather">
           <h2>{day}</h2>
-          <h4>{dailyWeather[i]}</h4>
-          <h3>{dailyTemperature[i]}°C</h3>
+          <img className="weather-icon" src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="" />
+          <h4>{weather}</h4>
+          <h3>{temperature} °C</h3>
         </div>
-      ))}
+      )
+    })}
+        
     </div>
   );
 }

@@ -1,23 +1,62 @@
+import { useLayoutEffect, useState } from "react";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import DailyWeather from "./components/DailyWeather/DailyWeather";
 import Navbar from "./components/common/Navbar/Navbar";
-import { title } from "./data/appData";
-import { citiesData } from "./data/citiesData";
-import { city, day, currentWeather, currentTemperature } from "./data/currentWeatherData";
-import { days, dailyWeather, dailyTemperature } from "./data/dailyWeatherData";
+import { navbarFor, title } from "./data/appData";
+import { currentWeatherResponse } from "./data/currentWeatherData";
+import { dailyWeatherResponse } from "./data/dailyWeatherData";
+import { citiesResponse } from "./data/citiesData";
+import { getCitiesResponse, getDailyWeatherResponse, getCurrentWeatherResponse } from "./DTOs/index";
 import "./App.css";
 
 function App() {
+  const [cities, setCities] = useState([]);
+  const [currentWeather, setCurrentWeather] = useState({});
+  const [dailyWeather, setDailyWeather] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [option, setOption] = useState(
+    localStorage.getItem(navbarFor) || "Karachi"
+  );
+
+  useLayoutEffect(() => {
+    async function fetchData() {
+      setCities(await citiesResponse());
+      setCurrentWeather(await currentWeatherResponse(option));
+      setDailyWeather(await dailyWeatherResponse(option));
+    }
+    fetchData();
+  }, [option]);
+
+  const citiesData = new getCitiesResponse(cities);
+  const dailyWeatherData = dailyWeather.map(
+    (data) => new getDailyWeatherResponse(data)
+  );
+  const currentWeatherData = new getCurrentWeatherResponse(currentWeather);
+  currentWeather.city = option;
+
+  const filterOptions = (text) => {
+    if (text.length >= 4) {
+      setOptions(
+        citiesData.cities.filter((option) =>
+          option.toLowerCase().includes(text.toLowerCase())
+        )
+      );
+    } else {
+      setOptions(citiesData.cities.filter((city) => city.length < 4));
+    }
+  };
+
   return (
     <div className="App">
-      <Navbar title={title} data={citiesData} />
-      <CurrentWeather
-        city={city}
-        day={day}
-        currentWeather={currentWeather}
-        currentTemperature={currentTemperature}
+      <Navbar
+        title={title}
+        options={options}
+        filterOptions={filterOptions}
+        setOption={setOption}
+        navbarFor={navbarFor}
       />
-      <DailyWeather days={days} dailyWeather={dailyWeather} dailyTemperature={dailyTemperature} />
+      <CurrentWeather currentWeatherData={currentWeatherData} />
+      <DailyWeather dailyWeatherData={dailyWeatherData} />
     </div>
   );
 }

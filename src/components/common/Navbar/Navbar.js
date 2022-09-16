@@ -1,12 +1,12 @@
 import React from "react";
 import Dropdown from "../Dropdown/Dropdown";
-import "./Navbar.css"
+import "./Navbar.css";
 
-function Navbar({title, data}) {
+function Navbar({ title, options, filterOptions, setOption, navbarFor }) {
   return (
     <div className="Navbar">
       <h1 className="title">{title}</h1>
-      <Dropdown data={data} />
+      <Dropdown options={options} filterOptions={filterOptions} setOption={setOption} dropdownFor={navbarFor} />
     </div>
   );
 }
