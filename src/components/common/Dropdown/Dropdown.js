@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Dropdown.css";
 
-function Dropdown({ options, filterCityOptions, setOption }) {
+function Dropdown({ options, filterOptions, setOption, dropdownFor }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openDropdown = () => {
@@ -11,10 +11,10 @@ function Dropdown({ options, filterCityOptions, setOption }) {
   const closeDropdown = () => {
     setIsDropdownOpen(() => false);
   };
-  
-  const handleCityChange = (option) => {
-    localStorage.setItem("city", option)
-    document.querySelector(".select").value = ""
+
+  const handleChange = (option) => {
+    localStorage.setItem(dropdownFor, option);
+    document.querySelector(".select").value = "";
     setOption(option);
   };
 
@@ -23,9 +23,8 @@ function Dropdown({ options, filterCityOptions, setOption }) {
       <div className="option-dropdown" name="option-dropdown">
         <input
           className="select"
-          
-          onChange={(e) => filterCityOptions(e.target.value)}
-          placeholder="Search for a city..."
+          onChange={(e) => filterOptions(e.target.value)}
+          placeholder={`Search for a ${dropdownFor}...`}
         />
         {isDropdownOpen && (
           <div className="options">
@@ -34,7 +33,7 @@ function Dropdown({ options, filterCityOptions, setOption }) {
                 key={i}
                 className="option"
                 value={option}
-                onMouseDown={() => handleCityChange(option)}
+                onMouseDown={() => handleChange(option)}
               >
                 {option}
               </span>
